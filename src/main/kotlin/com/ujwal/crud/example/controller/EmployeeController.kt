@@ -69,6 +69,9 @@ class EmployeeController {
     }
 
     @GetMapping("search")
-    fun search(@RequestParam("firstName") firstName: String): ResponseEntity<List<Employee>> =
-        ResponseEntity.ok(employeeRepository.findByFirstName(firstName))
+    fun search(
+        @RequestParam(required = true) query: String?
+    ): ResponseEntity<List<Employee>> =
+//        ResponseEntity.ok(employeeRepository.findByFirstNameOrLastNameOrEmail(firstName, lastName, email))
+        ResponseEntity.ok(employeeRepository.getAllEmployeesByQuery(query))
 }

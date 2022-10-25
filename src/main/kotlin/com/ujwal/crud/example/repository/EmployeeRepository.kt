@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface EmployeeRepository : JpaRepository<Employee, Long> {
+    fun findByFirstNameOrLastNameOrEmail(firstName: String?, lastName : String?, email : String?): List<Employee>
 
-    @Query
-    fun findByFirstName(firstName: String): List<Employee>
-
+    @Query("SELECT e FROM Employee e WHERE e.firstName = ?1 or e.lastName = ?1")
+    fun getAllEmployeesByQuery(query: String?) : List<Employee>
 }
