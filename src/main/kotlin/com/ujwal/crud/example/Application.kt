@@ -3,6 +3,10 @@ package com.ujwal.crud.example
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
+// TODO: 25-10-2022 Implement auth layer
+// TODO: 25-10-2022 Create Junit tests
+// TODO: 25-10-2022 explore micro services, kafka, liquibase
+// TODO: 25-10-2022 explore caching
 @SpringBootApplication
 class Application
 
