@@ -11,10 +11,10 @@ class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long = 0
 
-    @Column(name = "first-name")
+    @Column(name = "firstName")
     var firstName: String? = null
 
-    @Column(name = "last-name")
+    @Column(name = "lastName")
     var lastName: String? = null
 
     @Column(name = "email")
