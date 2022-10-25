@@ -21,7 +21,7 @@ class EmployeeController {
 
 
     @GetMapping("{id}")
-    fun getEmployeeById(@PathVariable(value = "id") id: Long): ResponseEntity<Employee> {
+    fun getEmployeeById(@PathVariable id: Long): ResponseEntity<Employee> {
         val result = employeeRepository.findById(id)
         return if (result.isPresent)
             ResponseEntity.ok(result.get())
@@ -36,7 +36,7 @@ class EmployeeController {
 
     @PutMapping("{id}")
     fun updateEmployee(
-        @PathVariable(value = "id") id: Long,
+        @PathVariable id: Long,
         @RequestBody employee: Employee
     ): ResponseEntity<Employee> {
         val employeeResult = employeeRepository.findById(id)
@@ -50,7 +50,7 @@ class EmployeeController {
     }
 
     @DeleteMapping("{id}")
-    fun deleteEmployee(@PathVariable(value = "id") id: Long): ResponseEntity<Boolean> {
+    fun deleteEmployee(@PathVariable id: Long): ResponseEntity<Boolean> {
         val employeeResult = employeeRepository.findById(id)
         return if (employeeResult.isPresent) {
             employeeRepository.deleteById(id)
