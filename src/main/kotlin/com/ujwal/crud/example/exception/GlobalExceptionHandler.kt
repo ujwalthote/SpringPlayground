@@ -15,12 +15,12 @@ class GlobalExceptionHandler {
         resourceNotFoundException: ResourceNotFoundException,
         request: WebRequest
     ): ResponseEntity<ErrorDetails> = ResponseEntity(
-        ErrorDetails(Date(), resourceNotFoundException.message, request.getDescription(false)),
+        ErrorDetails(Date(), resourceNotFoundException.message),
         HttpStatus.NOT_FOUND
     )
 
     @ExceptionHandler(Exception::class)
     fun globalExceptionHandler(exception: Exception, request: WebRequest): ResponseEntity<ErrorDetails> =
         ResponseEntity.internalServerError()
-            .body(ErrorDetails(Date(), exception.message, request.getDescription(false)))
+            .body(ErrorDetails(Date(), exception.message))
 }

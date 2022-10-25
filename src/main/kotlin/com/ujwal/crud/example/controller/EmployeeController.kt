@@ -1,5 +1,6 @@
 package com.ujwal.crud.example.controller
 
+import com.ujwal.crud.example.exception.ResourceNotFoundException
 import com.ujwal.crud.example.model.Employee
 import com.ujwal.crud.example.repository.EmployeeRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -32,16 +33,12 @@ class EmployeeController {
         return if (result.isPresent)
             ResponseEntity.ok(result.get())
         else
-            ResponseEntity.notFound().build()
+            throw ResourceNotFoundException()
     }
 
     @PostMapping
     fun createEmployee(@RequestBody employee: Employee): ResponseEntity<Employee> {
-        return try {
-            ResponseEntity.ok(employeeRepository.save(employee))
-        } catch (e: Exception) {
-            ResponseEntity.badRequest().build()
-        }
+        return ResponseEntity.ok(employeeRepository.save(employee))
     }
 
     @PutMapping("{id}")
@@ -55,7 +52,7 @@ class EmployeeController {
             employee.id = employeeFromDb.id
             ResponseEntity.ok(employeeRepository.save(employee))
         } else {
-            ResponseEntity.notFound().build()
+            throw ResourceNotFoundException()
         }
     }
 
@@ -66,7 +63,7 @@ class EmployeeController {
             employeeRepository.deleteById(id)
             ResponseEntity.ok(true)
         } else {
-            ResponseEntity.notFound().build()
+            throw ResourceNotFoundException()
         }
     }
 }
