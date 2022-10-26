@@ -1,12 +1,16 @@
 package com.ujwal.crud.example.model
 
+import com.ujwal.crud.example.model.Employee.Companion.TABLE_NAME
 import javax.persistence.*
 
-const val TABLE_NAME = "employees"
+
 
 @Entity
 @Table(name = TABLE_NAME)
 class Employee {
+    companion object{
+        const val TABLE_NAME = "employees"
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long = 0
@@ -19,4 +23,6 @@ class Employee {
 
     @Column(name = "email")
     var email: String? = null
+
+    var note : Note? = null
 }
