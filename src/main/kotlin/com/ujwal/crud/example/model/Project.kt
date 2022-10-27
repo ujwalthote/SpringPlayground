@@ -5,10 +5,10 @@ import javax.persistence.*
 
 
 @Entity
-@Table(name = Note.TABLE_NAME)
-class Note {
+@Table(name = Project.TABLE_NAME)
+class Project {
     companion object {
-        const val TABLE_NAME = "notes"
+        const val TABLE_NAME = "project"
     }
 
     @Id
@@ -16,8 +16,9 @@ class Note {
     var id: Long = 0
 
     @Column
-    var content: String? = null
+    var projectName: String? = null
 
     @Column
-    var timeStamp: Date? = null
+    var projectDescription : String? = null
+
 }

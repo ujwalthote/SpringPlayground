@@ -24,5 +24,7 @@ class Employee {
     @Column(name = "email")
     var email: String? = null
 
-    var note : Note? = null
+    @OneToMany
+    @JoinColumn(name = "id")
+    var projects : List<Project>? = null
 }
